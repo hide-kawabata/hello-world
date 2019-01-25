@@ -25,22 +25,22 @@ $
 Versions
 
 gen01:
-Generate asm programs that compute the sum of given two numbers.
+Add two  numbers. `1 2`
 
 gen02:
-- 1 2
+A binary operation. `- 1 2`
 
 gen03:
 (modified)
 
 gen04:
-Sum of numbers.
+Sum of numbers. `1 2 3 4 5` 
 
 gen05:
-* - 3 4 5
+Support Polish notation. `* - 3 4 5`
 
 gen06:
-(* (- 3 4) -5)
+Support Polish notation as S-expressions. `(* (- 3 4) -5)`
 
 gen07:
 Optimized version of gen06.
