@@ -45,6 +45,10 @@ Support Polish notation as S-expressions. `(* (- 3 4) -5)`
 gen07:
 Optimized version of gen06.
 
+gen08:
+Support if-expressions (true=1, false=0).
+`(+ 10 (if (or (< 4 3) (<= 2 5)) (+ 5 6) (- 7 8)))`
+
 
 TODO:
 
