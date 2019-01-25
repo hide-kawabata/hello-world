@@ -206,6 +206,19 @@ void read_C() {
     printf("F%d:\n", labF);
     printf("        pushq $1\n");
     printf("E%d:\n", labE);
+  } else if (strncmp(yytext, "not", 3) == 0) {
+    eat_token();
+    read_E();
+    printf("        popq %%rax\n");
+    printf("        cmpq $0, %%rax\n");
+    int labF = newlabel();
+    printf("        je F%d\n", labF);
+    printf("        pushq $0\n");
+    int labE = newlabel();
+    printf("        jmp E%d\n", labE);
+    printf("F%d:\n", labF);
+    printf("        pushq $1\n");
+    printf("E%d:\n", labE);
   }
 }
 

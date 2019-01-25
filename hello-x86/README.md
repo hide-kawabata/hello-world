@@ -47,13 +47,13 @@ Optimized version of gen06.
 
 gen08:
 Support if-expressions (true=1, false=0).
-`(+ 10 (if (or (< 4 3) (<= 2 5)) (+ 5 6) (- 7 8)))`
+`(+ 10 (if (or (not (< 4 3)) (<= 2 5)) (+ 5 6) (- 7 8)))`
 
 
 TODO:
 
 ```
-(if (not (not t)) (* 5 6) (* 3 4))
+(if (not (not #t)) (* 5 6) (* 3 4))
 (lambda (i j) (+ i j))
 (let ((i 1) (j 2)) (+ i j))
 (define x (+ 1 2))
