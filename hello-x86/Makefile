@@ -1,6 +1,10 @@
-TARGET = gen gen00 gen01 gen02 gen03 gen04 gen05 gen06 gen07
+TARGET = gen00 gen01 gen02 gen03 gen04 \
+         gen05 gen06 gen07 gen08 gen09 \
+         gen10
 
-gen07:
+CFLAGS = -Wall
+
+gen10:
 
 clean:
 	rm -f *.s *~ a.out *.o $(TARGET)

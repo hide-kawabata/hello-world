@@ -1,4 +1,5 @@
-Extremely small compiler for the x86 processor.
+#An Extremely Small Compiler for the x86 Processor.
+
 
 Usage
 
@@ -15,14 +16,21 @@ $ ./a.out
 ```
 
 ```
-$ echo '(+ (/ 4 2) (* 3 -1))' | perl split.pl | ./gen07 > tmp.s
+$ cat sum.ms
+(define (f x)
+  (if (= x 1)
+      x
+      (+ (f (- x 1)) x)))
+
+(f 10)
+$ cat sum.ms | perl split.pl | ./gen10 > tmp.s
 $ cc tmp.s
 $ ./a.out
--1
+55
 $
 ```
 
-Note:
+###Note
 
 - Tested only on macOS.
 - On Linux machines, replacing function names,
@@ -30,10 +38,10 @@ e.g., `_func` to `func`,
 should make the programms runnable.
 
 
-Versions
+###Versions
 
 gen01:
-Add two  numbers. `1 2`
+Adds two numbers. `1 2`
 
 gen02:
 A binary operation. `- 1 2`
@@ -45,24 +53,44 @@ gen04:
 Sum of numbers. `1 2 3 4 5` 
 
 gen05:
-Support Polish notation. `* - 3 4 5`
+Supports Polish notation. `* - 3 4 5`
 
 gen06:
-Support Polish notation as S-expressions. `(* (- 3 4) -5)`
+Supports Polish notation as S-expressions. `(* (- 3 4) -5)`
 
 gen07:
 Optimized version of gen06.
 
 gen08:
-Support if-expressions (true=1, false=0).
+Supports if-expressions (true=1, false=0).
 `(+ 10 (if (or (not (< 4 3)) (<= 2 5)) (+ 5 6) (- 7 8)))`
 
 gen09:
-Support let-expressions.
+Supports let-expressions.
 `(let ((i 1) (j 2)) (+ i j))`
 
+gen10:
+Supports function definitions and function application.
+`(define (f x y) (- x y)) (f 3 2)`
 
-TODO:
+`gen10` accepts a very small subset of the Scheme language:
+
+- no anonymous function (i.e., no lambda)
+- no closure
+- no internal function definition
+- no assignment
+- no dynamic memory allocation
+- no tail-call optimization
+- naive one-pass code generataion
+- fixed-sized stack frames
+- supports only integer type (logical operators return 0 or 1)
+- no syntax check
+- no type check
+
+
+
+
+#####TODO:
 
 ```
 (if (not (not #t)) (* 5 6) (* 3 4))
