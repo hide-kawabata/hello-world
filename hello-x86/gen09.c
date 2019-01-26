@@ -286,10 +286,12 @@ void read_C() {
     eat_token();
     read_string(); // must be "("
     eat_token();
+    int cur = idtable.n_vars;
     read_B();
     read_string(); // must be ")"
     eat_token();
     read_E();
+    idtable.n_vars = cur;
   }
 }
 
