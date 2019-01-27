@@ -73,7 +73,13 @@ gen10:
 Supports function definitions and function application.
 `(define (f x y) (- x y)) (f 3 2)`
 
-`gen10` accepts a very small subset of the Scheme language:
+gen11:
+Supports passing functions as arguments.
+`(define (h f x) (f (g x)))
+(define (g x) (- x 1))
+(h g 3)`
+
+`gen11` accepts a very small subset of the Scheme language:
 
 - no anonymous function (i.e., no lambda)
 - no closure
